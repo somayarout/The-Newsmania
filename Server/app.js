@@ -23,7 +23,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://the-newsmania-84n5.onrender.com", // change this to your frontend URL -   http://localhost:5173
     credentials: true,
 }));
 app.use("/api/v1/users", userRoutes);
