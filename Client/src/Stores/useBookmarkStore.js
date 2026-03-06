@@ -6,7 +6,7 @@ export const useBookmarkStore = create((set, get) => ({
     bookmarks: [],
     fetchBookmarks: async () => {
         try {
-            const response = await axiosInstance.get("/bookmarks");
+            const response = await axiosInstance.get("/api/v1/bookmarks");
             console.log("Fetched bookmarks:", response);
             set({ bookmarks: response.data.data });
         } catch (error) {
@@ -17,7 +17,7 @@ export const useBookmarkStore = create((set, get) => ({
     addBookmark: async (bookmarkData) => {
         try {
             console.log("Adding bookmark with data:", bookmarkData);
-            const response = await axiosInstance.post("/bookmarks", bookmarkData);
+            const response = await axiosInstance.post("/api/v1/bookmarks", bookmarkData);
             set((state) => ({ bookmarks: [response.data.data, ...state.bookmarks] }));
             toast.success("Bookmark added successfully");
         }
@@ -28,7 +28,7 @@ export const useBookmarkStore = create((set, get) => ({
     
     deleteBookmark: async (id) => {
         try {
-            await axiosInstance.delete(`/bookmarks/${id}`);
+            await axiosInstance.delete(`/api/v1/bookmarks/${id}`);
             set((state) => ({ bookmarks: state.bookmarks.filter(b => b._id !== id) }));
             toast.success("Bookmark deleted successfully");
         }

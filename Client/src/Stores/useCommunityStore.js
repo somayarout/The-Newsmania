@@ -16,7 +16,7 @@ export const usePostCommentStore = create((set, get) => ({
     try {
       set({ loading: true, error: null });
 
-      const res = await API.get("/community/getPosts");
+      const res = await API.get("/api/v1/community/getPosts");
 
       set({
         posts: res.data.details.posts,
@@ -31,7 +31,7 @@ export const usePostCommentStore = create((set, get) => ({
     try {
       set({ loading: true, error: null });
 
-    const res = await API.post("/community/createPost", {
+    const res = await API.post("/api/v1/community/createPost", {
       title,
       content,
     });
@@ -48,7 +48,7 @@ export const usePostCommentStore = create((set, get) => ({
 
   likeCount: async (postId) => {
   try {
-    const res = await API.post(`/community/likePost/${postId}`);
+    const res = await API.post(`/api/v1/community/likePost/${postId}`);
 
     console.log("Like response:", res.data);
 
@@ -79,7 +79,7 @@ export const usePostCommentStore = create((set, get) => ({
     try {
       set({ loading: true, error: null });
 
-      const res = await API.get(`/community/getComments/${postId}`);
+      const res = await API.get(`/api/v1/community/getComments/${postId}`);
 
       set({
         comments: res.data.data.comments,
@@ -92,7 +92,7 @@ export const usePostCommentStore = create((set, get) => ({
 
   addComment: async (postId, content) => {
     try {
-      await API.post("/community/addComment", {
+      await API.post("/api/v1/community/addComment", {
         postId,
         content,
       });
@@ -105,7 +105,7 @@ export const usePostCommentStore = create((set, get) => ({
 
   addReply: async (postId, parentCommentId, content) => {
     try {
-      await API.post("/community/addComment", {
+      await API.post("/api/v1/community/addComment", {
         postId,
         content,
         parentCommentId,

@@ -16,7 +16,7 @@ export const useAuthStore = create((set, get) => ({
   login: async (data) => {
     try {
       
-      const userCredential = await axiosInstance.post("/users/login", {
+      const userCredential = await axiosInstance.post("/api/v1/users/login", {
         email: data.email,
         password: data.password,  
       });
@@ -30,7 +30,7 @@ export const useAuthStore = create((set, get) => ({
 
   signup: async (data) => {
     try {
-      const userCredential = await axiosInstance.post("/users/register", {
+      const userCredential = await axiosInstance.post("/api/v1/users/register", {
         fullName: data.fullName,
         email: data.email,
         password: data.password,
@@ -45,7 +45,7 @@ export const useAuthStore = create((set, get) => ({
 
   logout: async () => {
     try {
-      await axiosInstance.post("/users/logout");
+      await axiosInstance.post("/api/v1/users/logout");
       set({ authUser: null });
 
       toast.success("Logged out successfully");
