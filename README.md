@@ -43,3 +43,20 @@ It supports authentication, community posting, likes, comments, and real-time in
 ---
 
 ## 📂 Project Structure
+NewsMania
+│
+├── Client
+│ ├── src
+│ │ ├── components
+│ │ ├── pages
+│ │ ├── stores
+│ │ └── App.jsx
+│
+├── Server
+│ ├── controllers
+│ ├── models
+│ ├── routes
+│ ├── DB
+│ └── index.js
+│
+└── README.md
